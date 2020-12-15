@@ -11,8 +11,7 @@ namespace ICautomation
         IWebDriver driver;
         LoginPage loginpage = new LoginPage();
         ProfilePage profilePage = new ProfilePage();
-        OpenAdminDropdown clickonadministration = new OpenAdminDropdown();
-
+        
         [SetUp]
         public void Setup()
         {
@@ -33,7 +32,7 @@ namespace ICautomation
             profilePage.VerifyUserName(driver);
 
             //open customer detail page
-            clickonadministration.ClickAdminDropdown(driver);
+            driver.FindElement(By.XPath("//li[@class='dropdown']/a")).Click();
             driver.FindElement(By.XPath("//a[contains(text(),'Customers')]")).Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
